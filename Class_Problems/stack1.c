@@ -21,7 +21,8 @@ int isEmpty()
     {
         return 0;
     }
-    else {
+    else 
+    {
         return 1;
     }
 }
@@ -29,10 +30,12 @@ int isEmpty()
 void peek()
 {
     int a = isEmpty();
-    if (a == 1){
+    if (a == 1)
+    {
         printf("%d\n", stack[top]);
     }
-    else{
+    else
+    {
         printf("Stack Empty\n");
     }
     
@@ -47,7 +50,8 @@ void push(int data)
         stack[top] = data;
         printf("Push confirmed\n");
     }
-    else {
+    else 
+    {
         printf("Stack is Full.\n");
     }
 }
@@ -62,7 +66,8 @@ void pop()
         top = top - 1;
         printf("%d popped out\n", data);
     }
-    else {
+    else 
+    {
         printf("Stack is Empty\n");
     }
 }
@@ -89,7 +94,8 @@ int main()
             printf("Please confirm pop\nType 1\t");
             int a;
             scanf("%d", &a);
-            if (a == 1){
+            if (a == 1)
+            {
                 pop();
             }
             goto label;
@@ -103,7 +109,8 @@ int main()
 
         case 4: return 0;
         
-        default: {
+        default: 
+        {
             printf("Invalid Input\n");
             goto label;
         }
