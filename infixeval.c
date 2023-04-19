@@ -128,7 +128,7 @@ char pop(struct stackChar *st)
 
 int popI(struct stackInt *st)
 {
-    char c;
+    int c;
     if (!isEmptyI(*st))
     {
         c = st->arr[st->top];
@@ -198,7 +198,7 @@ int main()
                 }
                 else
                 {
-                    while (!(precedence[str[i]] > precedence[peek(operator)]))
+                    while (!(precedence[str[i]] >precedence[peek(operator)]))
                     {
                         char o = pop(&operator);
                         int a = popI(&operand);
