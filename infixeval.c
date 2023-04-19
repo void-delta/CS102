@@ -165,6 +165,18 @@ int main()
     // step 2
     for (int i = 0; str[i] != '\0'; i++)
     {
+        // {
+        //     printf("Current: %c\n", str[i]);
+
+        //     printf("Operand: ");
+        //     for(int j = 0; j <= operand.top; j++) printf("%d ", operand.arr[j]);
+        //     printf("\n");
+
+        //     printf("Operator: ");
+        //     for(int j = 0; j <= operator.top; j++) printf("%c ", operator.arr[j]);
+        //     printf("\n\n\n");
+        // }
+
         if (isdigit(str[i]) == 1)
         {
             pushI(str[i] - '0', &operand);
@@ -179,14 +191,14 @@ int main()
             }
             else
             {
-                if (precedence[str[i]] >= precedence[peek(operator)])
+                if (precedence[str[i]] > precedence[peek(operator)])
                 {
                     push(str[i], &operator);
-                    printf("Pushed: %c\n", str[i]);
+                    // printf("Pushed: %c\n", str[i]);
                 }
                 else
                 {
-                    while (!(precedence[str[i]] >= precedence[peek(operator)]))
+                    while (!(precedence[str[i]] > precedence[peek(operator)]))
                     {
                         char o = pop(&operator);
                         int a = popI(&operand);
@@ -197,19 +209,19 @@ int main()
                         switch (o)
                         {
                         case '+':
-                            pushI(a + b, &operand);
+                            pushI(b + a, &operand);
                             break;
 
                         case '-':
-                            pushI(a - b, &operand);
+                            pushI(b - a, &operand);
                             break;
 
                         case '*':
-                            pushI(a * b, &operand);
+                            pushI(b * a, &operand);
                             break;
 
                         case '/':
-                            pushI(a / b, &operand);
+                            pushI(b / a, &operand);
                             break;
                         }
                     }
@@ -234,24 +246,26 @@ int main()
                 int a = popI(&operand);
                 int b = popI(&operand);
 
+                // printf("o: %c, a: %d, b: %d\n", o, a, b);
+
                 // int aVal = (int) a - (int) '0';
                 // int bVb1 = (int) b - (int) '0';
                 switch (o)
                 {
                 case '+':
-                    pushI(a + b, &operand);
+                    pushI(b + a, &operand);
                     break;
 
                 case '-':
-                    pushI(a - b, &operand);
+                    pushI(b - a, &operand);
                     break;
 
                 case '*':
-                    pushI(a * b, &operand);
+                    pushI(b * a, &operand);
                     break;
 
                 case '/':
-                    pushI(a / b, &operand);
+                    pushI(b / a, &operand);
                     break;
                 }
             }
