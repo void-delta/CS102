@@ -46,12 +46,12 @@ int main()
 
     if(x == 1)
     {
-        reverse(str, tpr);
+        reverse(str, &tpr);
     }
 
     else if(x == 2)
     {
-        int a = checkp(str, tpr);
+        int a = checkp(str, &tpr);
 
         if(a == 1)
         {
@@ -65,12 +65,12 @@ int main()
     return 0;
 }
 
-void push(char c, struct arr tpr)
+void push(char *c, struct arr *tpr)
 {
     if(!isFull())
     {
-        tpr.top = tpr.top + 1;
-        tpr.name[tpr.top] = c;
+        tpr->top = tpr->top + 1;
+        tpr->name[tpr->top] = c;
         return;
     }
     else
@@ -80,26 +80,26 @@ void push(char c, struct arr tpr)
     }
 }
 
-void display(struct arr ch)
+void display(struct arr *ch)
 {
     for(int i = tpr.top; i != -1; i = i - 1)
     {
-        printf("%c", ch.name[i]);
+        printf("%c", ch->name[i]);
     }
     return;
 }
 
-int checkp(char *ch[], struct arr tpr)
+int checkp(char *ch[], struct arr *tpr)
 {
-    for(int i = 0; tpr.top != -1; i++)
+    for(int i = 0; tpr->top != -1; i++)
     {
-        push(ch[i], tpr);
+        push(ch[i], &tpr);
     }
 
-    for(int i = 0, t = tpr.top; i < tpr.top; i++, t--)
+    for(int i = 0, t = tpr->top; i < tpr->top; i++, t--)
     {
         int a = 0;
-        if(ch[i] == tpr.name[t])
+        if(ch[i] == tpr->name[t])
         {
             continue;
         }
@@ -119,9 +119,9 @@ int checkp(char *ch[], struct arr tpr)
     }
 }
 
-void reverse(char *ch[], struct arr tpr)
+void reverse(char *ch[], struct arr *tpr)
 {
-    for(int i = 0; tpr.top != -1; i++)
+    for(int i = 0; tpr->top != -1; i++)
     {
         push(ch[i], tpr);
     }
