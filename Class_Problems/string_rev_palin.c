@@ -33,38 +33,6 @@ int isEmpty()
     }
 }
 
-int main()
-{
-    tpr.top = -1;
-    char str[MAX];
-    printf("Enter the String\t");
-    scanf("%s", str);
-
-    printf("1) Reverse\n2) Check for Palindrome\n\t\t");
-    int x;
-    scanf("%d", &x);
-
-    if(x == 1)
-    {
-        reverse(str, &tpr);
-    }
-
-    else if(x == 2)
-    {
-        int a = checkp(str, &tpr);
-
-        if(a == 1)
-        {
-            printf("String is Palindrome\n");
-        }
-        else
-        {
-            printf("String is not Palindrome\n");
-        }
-    }
-    return 0;
-}
-
 void push(char *c, struct arr *tpr)
 {
     if(!isFull())
@@ -80,23 +48,23 @@ void push(char *c, struct arr *tpr)
     }
 }
 
-void display(struct arr *ch)
+void display(int len, struct arr *ch)
 {
-    for(int i = tpr.top; i != -1; i = i - 1)
+    for(int i = tpr.top; i < len; i = i - 1)
     {
         printf("%c", ch->name[i]);
     }
     return;
 }
 
-int checkp(char *ch[], struct arr *tpr)
+int checkp(int len, char ch[], struct arr *tpr)
 {
     for(int i = 0; tpr->top != -1; i++)
     {
         push(ch[i], &tpr);
     }
 
-    for(int i = 0, t = tpr->top; i < tpr->top; i++, t--)
+    for(int i = 0, t = tpr->top; i < len; i++, t--)
     {
         int a = 0;
         if(ch[i] == tpr->name[t])
@@ -108,7 +76,7 @@ int checkp(char *ch[], struct arr *tpr)
             a = 1;
         }
 
-        if(a == 1)
+        if(a == 0)
         {
             return 0;
         }
@@ -119,11 +87,41 @@ int checkp(char *ch[], struct arr *tpr)
     }
 }
 
-void reverse(char *ch[], struct arr *tpr)
+void reverse(int len, char *ch[], struct arr *tpr)
 {
-    for(int i = 0; tpr->top != -1; i++)
+    for(int i = 0; i < len; i++)
     {
         push(ch[i], tpr);
     }
-    display(tpr);
+    display(len, tpr);
+    return;
+}
+
+int main()
+{
+    tpr.top = -1;
+    char str[MAX];
+    printf("Enter the String\t");
+    scanf("%s", str);
+    int len = strlen(str);
+
+    printf("1) Reverse  2) Check for Palindrome\n\t\t");
+    int x;
+    scanf("%d", &x);
+
+    if(x == 1)
+    {
+        reverse(len, str, &tpr);
+    }
+
+    else if(x == 2)
+    {
+        int a = checkp(len, str, &tpr);
+
+        if(a == 1)
+            printf("String is Palindrome\n");
+        else
+            printf("String is not Palindrome\n");
+    }
+    return 0;
 }
