@@ -12,25 +12,17 @@ struct arr{
 int isFull()
 {
     if(tpr.top == MAX - 1)
-    {
         return 1;
-    }
     else 
-    {
         return 0;
-    }
 }
 
 int isEmpty()
 {
     if(tpr.top == -1)
-    {
         return 1;
-    }
     else
-    {
         return 0;
-    }
 }
 
 void push(char c, struct arr *tpr)
@@ -59,32 +51,26 @@ void display(int len, struct arr *ch)
 
 int checkp(int len, char ch[], struct arr *tpr)
 {
-    for(int i = 0; tpr->top != -1; i++)
+    for(int i = 0; i < len; i++)
     {
         push(ch[i], tpr);
+        // printf("%d", i); to check the functioning
     }
 
-    for(int i = 0, t = tpr->top; i < len; i++, t--)
+    int a = 0;
+    for(int i = 0, t = tpr->top; i < len || t > -1; i++, t--)
     {
-        int a = 0;
         if(ch[i] == tpr->name[t])
-        {
             continue;
-        }
         else
-        {
             a = 1;
-        }
-
-        if(a == 0)
-        {
-            return 0;
-        }
-        else
-        {
-            return 1;
-        }
     }
+
+    if(a == 0)
+       return 0;
+    else
+       return 1;
+    
 }
 
 void reverse(int len, char ch[], struct arr *tpr)
@@ -111,15 +97,13 @@ int main()
     scanf("%d", &x);
 
     if(x == 1)
-    {
         reverse(len, str, &tpr);
-    }
 
     else if(x == 2)
     {
         int a = checkp(len, str, &tpr);
 
-        if(a == 1)
+        if(a == 0)
             printf("String is Palindrome\n");
         else
             printf("String is not Palindrome\n");
