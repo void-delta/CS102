@@ -50,7 +50,7 @@ void push(char c, struct arr *tpr)
 
 void display(int len, struct arr *ch)
 {
-    for(int i = tpr.top; 0 < i < len; i = i - 1)
+    for(int i = tpr.top; i >= 0; i = i - 1)
     {
         printf("%c", ch->name[i]);
     }
@@ -92,7 +92,7 @@ void reverse(int len, char ch[], struct arr *tpr)
     for(int i = 0; i < len; i++)
     {
         push(ch[i], tpr);
-        printf("%d", i);
+        // printf("%d", i); to check the functioning
     }
     display(len, tpr);
     return;
