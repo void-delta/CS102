@@ -34,18 +34,23 @@ int pop(stack *st)
     exit(102);
 }
 
+void display(stack *st);
+
 void hanoi(int n, stack *st1, stack *st2, stack *st3)
 {
     if(n == 1)
     {
         push(st2, pop(st1));
+        display(st1);
+        display(st2);
+        display(st3);
+        printf("\n");
         return;
     }
     else
     {
-        hanoi(n-1, st1, st2, st3);
-        hanoi(n-1, st2, st3, st1);
-        push(st2, pop(st1));
+        hanoi(n-1, st1, st3, st2);
+        hanoi(1, st1, st2, st3);
         hanoi(n-1, st3, st2, st1);
     }
 }
@@ -93,6 +98,6 @@ int main()
     display(&st1);
     display(&st2);
     display(&st3);
-
+    
     return 0;
 }

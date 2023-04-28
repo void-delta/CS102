@@ -1,0 +1,26 @@
+Introduction to -->>The TOWER OF HANOI<<--
+
+Tower of Hanoi is a mathematical puzzle where we have three rods (A, B, and C) and N disks. 
+Initially, all the disks are stacked in decreasing value of diameter i.e., the smallest disk 
+is placed on the top and they are on rod A. 
+The objective of the puzzle is to move the entire stack to another rod (here considered C), 
+obeying the following simple rules: 
+
+1] Only one disk can be moved at a time.
+2] Each move consists of taking the upper disk from one of the stacks and placing it on top of 
+   another stack i.e. a disk can only be moved if it is the uppermost disk on a stack.
+3] No disk may be placed on top of a smaller disk.
+
+This is a very interesting problem that is solved by incorporating stacks and recursion, and is a classic
+problem to build basics in the programming logic and coding solutions to general problems.
+I got the solution with the help of one of my very good friends.
+
+The method we use for this recursion solution is simple:
+
+1] Find and define the base case and write the output for that, in code using descision making tools.
+   Base case is the case that will help the recursive loop to break, so define it carefully.
+2] Then assume that you already have the working function and call it for the general term, using the case 
+   just below that.
+3] Then write the code keeping the recursive function in mind and it will magically start working.
+4] The function depends on getting to the base case and then jumping back forward through iterative calls and 
+   giving the answer for the general case.
