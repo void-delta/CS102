@@ -65,7 +65,7 @@ char peek()
 
 void display()
 {
-    if(isEmpty)
+    if(!isEmpty())
     {
         for(int i = top; i > -1; i--)
         {

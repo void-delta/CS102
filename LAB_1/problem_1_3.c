@@ -67,9 +67,7 @@ int main()
     {
         char c = pop();
         if(c == st[i])
-        {
             continue;
-        }
         else 
             a = 1;
     }

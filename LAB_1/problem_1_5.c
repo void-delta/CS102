@@ -86,7 +86,7 @@ int main()
     for(int i = 0; i < x; i++)
     {
         if(tops == -1)
-                pushs(a[i]);
+            pushs(a[i]);
         else if(stack[tops] > a[i])
         {
             for(; stack[tops] > a[i];)
