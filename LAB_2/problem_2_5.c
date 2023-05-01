@@ -69,6 +69,13 @@ int main()
         }
         else if(arr[i] == ')' || arr[i] == ']' || arr[i] == '}')
         {
+            if(top == -1)
+            {
+                printf("Brackets are not Balanced\n");
+                a = 1;
+                // break;
+                return 0;
+            }
             if(peek() == '(')
             {
                 if(arr[i] == ')')
@@ -82,7 +89,7 @@ int main()
                     break;
                 }
             }
-            if(peek() == '[')
+            else if(peek() == '[')
             {
                 if(arr[i] == ']')
                 {
@@ -95,7 +102,7 @@ int main()
                     break;
                 }
             }
-            if(peek() == '{')
+            else if(peek() == '{')
             {
                 if(arr[i] == '}')
                 {
