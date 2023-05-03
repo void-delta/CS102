@@ -41,10 +41,10 @@ void hanoi(int n, stack *st1, stack *st2, stack *st3)
     if(n == 1)
     {
         push(st2, pop(st1));
-        display(st1);
+        /* display(st1);
         display(st2);
         display(st3);
-        printf("\n");
+        printf("\n"); */
         return;
     }
     else
