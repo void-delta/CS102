@@ -4,20 +4,85 @@
 
 #define MAX 25
 
-typedef struct queue{
-    int arr[MAX];
-    int rear;
-    int front;
-} queue;
+int queue[MAX];
+int fron = 0;
+int rear = -1;
 
-void enqueue(int n, queue *q)
+void enqueue(int n)
 {
-    q->arr[q->rear] = n;
+    if(rear != MAX - 1)
+    {
+        rear = rear + 1;
+        queue[rear] = n;
+        printf("Enqueued\n");
+    }
+    else
+        printf("Queue Overflow\n");
     return;
 }
 
-int dequeue(queue *q)
+int dequeue()
 {
-    int c = q->arr[q->front];
-    
+    if(fron <= rear)
+    {
+        int c = queue[fron];
+        fron = fron + 1;
+        printf("Dequeued\n");
+        return c;
+    }
+    else
+        printf("Queue Undeflow\n");
+    exit(101);
+}
+
+void display()
+{
+    if(fron <= rear)
+    {
+        for(int i = fron; i <= rear; i++)
+        {
+            printf(" %d ", queue[i]);
+        }
+        printf("\n");
+        return;
+    }
+    else
+        printf("Queue Underflow\n");
+    exit(102);
+}
+
+int main()
+{
+    while(1)
+    {
+        printf("1)Enqueue 2)Dequeue 3)Display 4)Quit\t");
+        int x;
+        scanf("%d", &x);
+
+        if(x == 1)
+        {
+            printf("Enter the Number to be Enqueued\t");
+            int n;
+            scanf("%d", &n);
+            enqueue(n);
+        }
+        else if(x == 2)
+        {
+            printf("%d dequeued\n", dequeue());
+        }
+        else if(x == 3)
+        {
+            printf("The queue is \n\n");
+            display();
+        }
+        else if(x == 4)
+        {
+            return 0;
+        }
+        else
+        {
+            printf("Invalid Input\n");
+        }
+    }
+    return 0;
 }
