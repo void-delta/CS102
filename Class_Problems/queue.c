@@ -1,4 +1,4 @@
-/* Logic for enqueue and dequeue */
+/* Menu driven code for Queue data type */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -51,11 +51,22 @@ void display()
     exit(102);
 }
 
+int peek()
+{
+    if(fron <= rear)
+    {
+        return queue[rear];
+    }
+    else
+        printf("Queue Undeflow\n");
+    exit(102);
+}
+
 int main()
 {
     while(1)
     {
-        printf("1)Enqueue 2)Dequeue 3)Display 4)Quit\t");
+        printf("1)Enqueue 2)Dequeue 3)Display 4)Peek 5)Quit\t");
         int x;
         scanf("%d", &x);
 
@@ -76,6 +87,10 @@ int main()
             display();
         }
         else if(x == 4)
+        {
+            printf("The Element is\t%d\n", peek());
+        }
+        else if(x == 5)
         {
             return 0;
         }
