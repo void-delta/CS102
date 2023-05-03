@@ -1,47 +1,50 @@
-/* Menu driven code for Queue data type */
+/* Implementing QUEUE using structures */
+
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 #define MAX 25
 
-int queue[MAX];
-int fron = 0;
-int rear = -1;
+struct queue{
+    int kyu[MAX];
+    int fron;
+    int rear;
+};
 
-void enqueue(int n)
+void enqueue(int n, struct queue *q)
 {
-    if(rear != MAX - 1)
+    if(q->rear != MAX - 1)
     {
-        rear = rear + 1;
-        queue[rear] = n;
-        printf("Enqueued\n");
+        q->rear = q->rear + 1;
+        q->kyu[q->rear] = n;
+        return;
     }
     else
         printf("Queue Overflow\n");
     return;
 }
 
-int dequeue()
+int dequeue(struct queue *q)
 {
-    if(fron <= rear)
+    if(q->fron <= q->rear)
     {
-        int c = queue[fron];
-        fron = fron + 1;
-        printf("Dequeued\n");
+        int c = q->kyu[q->fron];
+        q->fron = q->fron + 1;
         return c;
     }
     else
-        printf("Queue Undeflow\n");
+        printf("Queue Underflow\n");
     exit(101);
 }
 
-void display()
+void display(struct queue *q)
 {
-    if(fron <= rear)
+    if(q->fron <= q->rear)
     {
-        for(int i = fron; i <= rear; i++)
+        for(int i = q->fron; i <= q->rear; i++)
         {
-            printf(" %d ", queue[i]);
+            printf(" %d ", q->kyu[i]);
         }
         printf("\n");
         return;
@@ -51,11 +54,11 @@ void display()
     return;
 }
 
-int peek()
+int peek(struct queue *q)
 {
-    if(fron <= rear)
+    if(q->fron <= q->rear)
     {
-        return queue[rear];
+        return q->kyu[q->rear];
     }
     else
         printf("Queue Undeflow\n");
@@ -64,6 +67,10 @@ int peek()
 
 int main()
 {
+    struct queue qu;
+    qu.fron = 0;
+    qu.rear = -1;
+
     while(1)
     {
         printf("1)Enqueue 2)Dequeue 3)Display 4)Peek 5)Quit\t");
@@ -75,20 +82,20 @@ int main()
             printf("Enter the Number to be Enqueued\t");
             int n;
             scanf("%d", &n);
-            enqueue(n);
+            enqueue(n, &qu);
         }
         else if(x == 2)
         {
-            printf("%d dequeued\n", dequeue());
+            printf("%d dequeued\n", dequeue(&qu));
         }
         else if(x == 3)
         {
             printf("The queue is \n\n");
-            display();
+            display(&qu);
         }
         else if(x == 4)
         {
-            printf("The Element is\t%d\n", peek());
+            printf("The Element is\t%d\n", peek(&qu));
         }
         else if(x == 5)
         {
@@ -99,5 +106,4 @@ int main()
             printf("Invalid Input\n");
         }
     }
-    return 0;
 }
