@@ -76,4 +76,4 @@ int main()
     }
     printf("Result is\t%d", (int)pop());
     return 0;
-}
+} 
