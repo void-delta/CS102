@@ -1,4 +1,6 @@
-/* Menu driven code for Queue data type */
+/* Write a C program to demonstrate the various operations of the simple queue such as enque, deque
+and display. The program should be menu driven. */
+
 #include <stdio.h>
 #include <stdlib.h>
 
