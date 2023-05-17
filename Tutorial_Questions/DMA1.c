@@ -34,7 +34,8 @@ int main()
     {
         printf("Title of the Book\t%s\n", bookptr[i].title);
         printf("Author of the Book\t%s\n", bookptr[i].author);
-        printf("Year of Publishing of the Book\t%d\n", bookptr[i].year);
+        printf("Year of the Book\t%d\n", bookptr[i].year);
+        printf("\n");
     }
     free(bookptr);
     return 0;
