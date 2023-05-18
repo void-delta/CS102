@@ -6,11 +6,13 @@ menu driven. */
 #include <stdlib.h>
 #define MAX 6
 
-typedef struct
-{
+typedef int unit;
+
+
+typedef struct{
     int cq[MAX];
-    int front;
-    int rear;
+    unit front;
+    unit rear;
 }cqueue;
 
 void enqueue(cqueue *q, int n)
