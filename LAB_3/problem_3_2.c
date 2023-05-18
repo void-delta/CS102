@@ -15,52 +15,52 @@ typedef struct
 
 void enqueue(cqueue *q, int n)
 {
-    if(q -> front == -1 && q -> rear == -1)
+    if(q->front == -1 && q->rear == -1)
     {
-        q -> front++;
-        q -> cq[++(q -> rear)] = n;
+        q->front++;
+        q->cq[++(q->rear)] = n;
     }
-    else if(q -> front == q -> rear + 1)
+    else if(q->front == q->rear + 1)
     {
         printf("Circular Queue Overflow\n");
         exit(100);
     }
-    else if (q -> rear == MAX - 1 && q -> front == 0)
+    else if (q->rear == MAX - 1 && q->front == 0)
     {
         printf("Circular Queue Overflow\n");
         exit(101);
     }
     
-    else if(q -> rear == MAX - 1 && q -> front != 0)
+    else if(q->rear == MAX - 1 && q->front != 0)
     {
-        q -> rear = 0;
-        q -> cq[q -> rear] = n;
+        q->rear = 0;
+        q->cq[q->rear] = n;
     }
     else
-        q -> cq[++(q -> rear)] = n;
+        q->cq[++(q->rear)] = n;
 }
 int dequeue(cqueue *q)
 {
-    if(q -> front == -1 && q -> rear == -1)
+    if(q->front == -1 && q->rear == -1)
     {
         printf("Circular Queue Underflow\n");
         exit(102);
     }
-    else if(q -> front == q -> rear)
+    else if(q->front == q->rear)
     {
-        int val = q -> cq[q -> front];
-        q -> front = -1;
-        q -> rear = -1;
+        int val = q->cq[q->front];
+        q->front = -1;
+        q->rear = -1;
         return val;
     }
-    else if(q -> front == MAX - 1)
+    else if(q->front == MAX - 1)
     {
-        int val = q -> cq[q -> front];
-        q -> front = 0;
+        int val = q->cq[q->front];
+        q->front = 0;
         return val;
     }
     else
-        return q -> cq[(q -> front)++];
+        return q->cq[(q->front)++];
 }
 
 void display(cqueue *q)
