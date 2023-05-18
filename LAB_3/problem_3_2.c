@@ -4,126 +4,119 @@ menu driven. */
 
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 6
 
-#define MAX 10
-
-int queue[MAX];
-int fron = -1;
-int rear = -1;
-int counter = 0;
-
-void insert(int n)
+typedef struct
 {
-    if((fron == 0 && rear == MAX -1) || (fron == rear + 1))
-    {
-        printf("Queue Overflow \n");
-        return;
-    }
-    if(fron == -1)
-    {
-        fron = 0;
-        rear = 0;
-    }
-    else
-    {
-        if(rear = MAX - 1)
-            rear = 0;
-        else
-            rear = rear + 1;
-    }
-    queue[rear] = n;
-}
+    int cq[MAX];
+    int front;
+    int rear;
+}cqueue;
 
-int delete()
+void enqueue(cqueue *q, int n)
 {
-    if(fron == -1)
+    if(q -> front == -1 && q -> rear == -1)
     {
-        printf("Queue Overflow\n");
+        q -> front++;
+        q -> cq[++(q -> rear)] = n;
+    }
+    else if(q -> front == q -> rear + 1)
+    {
+        printf("Circular Queue Overflow\n");
+        exit(100);
+    }
+    else if (q -> rear == MAX - 1 && q -> front == 0)
+    {
+        printf("Circular Queue Overflow\n");
         exit(101);
     }
-    int c = queue[fron];
-    if(fron == rear)
+    
+    else if(q -> rear == MAX - 1 && q -> front != 0)
     {
-        fron = -1;
-        rear = -1;
+        q -> rear = 0;
+        q -> cq[q -> rear] = n;
     }
     else
+        q -> cq[++(q -> rear)] = n;
+}
+int dequeue(cqueue *q)
+{
+    if(q -> front == -1 && q -> rear == -1)
     {
-        if(fron = MAX - 1)
-            fron = 0;
-        else
-            fron = fron + 1;
+        printf("Circular Queue Underflow\n");
+        exit(102);
     }
-    return c;
+    else if(q -> front == q -> rear)
+    {
+        int val = q -> cq[q -> front];
+        q -> front = -1;
+        q -> rear = -1;
+        return val;
+    }
+    else if(q -> front == MAX - 1)
+    {
+        int val = q -> cq[q -> front];
+        q -> front = 0;
+        return val;
+    }
+    else
+        return q -> cq[(q -> front)++];
 }
 
-void display()
+void display(cqueue *q)
 {
-    int fi = fron, ri = rear;
-    if(fron == -1)
+    if(q -> front <= q -> rear)
     {
-        printf("Queue Empty\n");
-        return;
-    }
-    printf("Queue Elements:\t");
-    if(fi <= ri)
-    {
-        while(fi <= ri)
-        {
-            printf("%d ", queue[fi]);
-            fi = fi + 1;
-        }
+        for(int i = q -> front; i <= q -> rear; i++)
+            printf("%d\t", q -> cq[i]);    
+        printf("\n");
     }
     else
     {
-        while(fi <= MAX - 1)
-        {
-            printf("%d ", queue[fi]);
-            fi = fi + 1;
-        }
-        fi = 0;
-        while(fi <= ri)
-        {
-            printf("%d ", queue[fi]);
-            fi = fi + 1;
-        }
+        for(int i = q -> front; i < MAX; i++)
+            printf("%d\t", q -> cq[i]);
+        for(int i = 0; i <= q -> rear; i++)
+            printf("%d\t", q -> cq[i]);
+        printf("\n");
     }
-    printf("\n\n");
 }
 
 int main()
 {
-    while(1)
-    {
-        printf("1)Enqueue 2)Dequeue 3)Display 4)Exit\t");
-        int n;
-        scanf("%d", &n);
+    int n;
+    cqueue kyu;
 
+    kyu.front = -1;
+    kyu.rear = -1;
+
+    do
+    {
+        printf("1)Enqueue 2)Dequeue 3)Display 4)Exit\n");
+        scanf("%d", &n);
         switch(n)
         {
-            case 1:
-            printf("Enter the Number:\t");
-            int x;
-            scanf("%d", &x);
-            insert(x);
-            break;
-
-            case 2:
-            x = delete();
-            printf("%d Dequeued\n");
-            break;
-
-            case 3:
-            display();
-            break;
-
-            case 4:
-            return 0;
-
-            default:
-            printf("INVALID INPUT\n");
-            break;
+            case 1 :
+                int m;
+                printf("Enter the value to enqueue\n");
+                scanf("%d", &m);
+                enqueue(&kyu, m);
+                printf("%d was enqueued\n", m);
+                break;
+            case 2 :
+                printf("%d was dequeued\n", dequeue(&kyu));
+                break;
+            case 3 :
+                display(&kyu);
+                break;
+            case 4 :
+                return 0;
+                break;
+            default :
+                printf("Invalid input\n");
+                break;
         }
     }
+    while(n != 4);
+    
     return 0;
-}   
+}
