@@ -43,7 +43,7 @@ int deqf(kyu *q)
     {
         q->rear = -1;
         int temp = q->arr[q->fron];
-        q->fron=-1;
+        q->fron = -1;
         return temp;
     }
     return q->arr[q->fron++];
@@ -57,9 +57,9 @@ int deqr(kyu *q)
     }
     else if(q->rear == q->fron)
     {
-        q->fron=-1;
+        q->fron = -1;
         int temp = q->arr[q->fron];
-        q->rear=-1;
+        q->rear = -1;
         return temp;
     }
     return q->arr[q->rear--];
@@ -69,13 +69,9 @@ void display(kyu *q)
     int temp = q->fron;
     printf("\nPrinting Queue...\n");
     if(q->fron==-1)
-    {
         return;
-    }
     while(temp!=q->rear)
-    {
         printf("%d  ", q->arr[temp++]);
-    }
     printf("%d  ", q->arr[temp]);
     printf("\n\n");
 }
@@ -128,5 +124,4 @@ int main()
             printf("Invalid Input\n");
         }
     }
-
 }
