@@ -21,7 +21,7 @@ int main()
 
     bookst *ptr;
     ptr = (bookst*)malloc(n*sizeof(bookst));
-    printf("Enter the details\n");
+    printf("Enter the details\n\n");
 
     for(int i = 0; i < n; i++)
     {
@@ -31,12 +31,13 @@ int main()
         scanf("%s", ptr[i].autho);
         printf("Enter the Year of Publishing\t");
         scanf("%d", &ptr[i].year);
+        printf("\n");
     }
 
     printf("\nPrinting the details..........\n\n");
 
     for(int i = 0; i < n; i++)
-        printf("Title: %s\nAuthor: %s\nYear: %d\n", ptr[i].title, ptr[i].autho, ptr[i].year);
+        printf("Title: %s\nAuthor: %s\nYear: %d\n\n", ptr[i].title, ptr[i].autho, ptr[i].year);
     free(ptr);
     return 0;
 }
