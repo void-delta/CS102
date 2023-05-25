@@ -13,7 +13,7 @@ The sandwiches are placed in a stack. At each step:
 You are given two integer arrays students and sandwiches where sandwiches[i] is the 
 type of the i​​​​​​th sandwich in the stack (i = 0 is the top of the stack) and students[j] is the 
 preference of the j​​​​​​th student in the initial queue (j = 0 is the front of the queue). 
-Return the number of students that are unable to eat. */
+Return the number of students that are able to eat. */
 
 #include <stdio.h>
 #include <stdlib.h>

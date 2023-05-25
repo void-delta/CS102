@@ -1,3 +1,4 @@
+Question 1
 You are keeping the scores for a baseball game with strange rules. 
 At the beginning of the game, you start with an empty record.
 You are given a list of strings operations, where operations[i] is 
@@ -10,6 +11,7 @@ An integer x: Record a new score of x.
 Return the sum of all the scores on the record after applying all the operations.
 
 
+Question 2
 You are given the Instagram post caption of a popular influencer which contains hashtags. 
    In one operation, you can: 
    ● Choose a hash in the caption. 
@@ -17,7 +19,7 @@ You are given the Instagram post caption of a popular influencer which contains 
    Print the caption after all hashes have been removed.
 
 
-
+Question 3
 The school cafeteria offers circular and square sandwiches at lunch break, 
 referred to by numbers 0 and 1 respectively. All students stand in a queue. 
 Each student either prefers square or circular sandwiches.
@@ -33,4 +35,4 @@ The sandwiches are placed in a stack. At each step:
 You are given two integer arrays students and sandwiches where sandwiches[i] is the 
 type of the i​​​​​​th sandwich in the stack (i = 0 is the top of the stack) and students[j] is the 
 preference of the j​​​​​​th student in the initial queue (j = 0 is the front of the queue). 
-Return the number of students that are unable to eat.
+Return the number of students that are able to eat.
