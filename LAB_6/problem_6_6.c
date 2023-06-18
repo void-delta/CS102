@@ -1,4 +1,4 @@
-/*  */
+/* Write a C program to reverse first N elements of the linked list. */
 
 #include <stdio.h>
 #include <stdlib.h>
