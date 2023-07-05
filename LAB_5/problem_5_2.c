@@ -100,7 +100,7 @@ void display()
     if(check == NULL)
         printf("Linked List Empty\n");
     else
-    {
+    { 
         while(check != NULL){
             count = count + 1;
             printf("NODE#%d:\t%d\n", count, check->var);
