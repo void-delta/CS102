@@ -42,7 +42,6 @@ Node *adj_swap(Node *head)
         int temp = ptr->data;
         ptr->data = ptr->next->data;
         ptr->next->data = temp;
-
         ptr = ptr->next->next;
     }
     return head;

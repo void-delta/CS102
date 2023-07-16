@@ -98,7 +98,7 @@ int main(){
     root->right = NULL;
     int count = 1;
     while(1){
-        printf("\n1)Insert 2)Delete 3)Seearch 4)Display 5)Exit\t");
+        printf("\n1)Insert 2)Delete 3)Search 4)Display 5)Exit\t");
         int x;
         scanf("%d", &x);
         switch(x){
