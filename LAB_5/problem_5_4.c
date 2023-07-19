@@ -6,7 +6,7 @@
 struct Node {
     int data;
     struct Node* next;
-};
+};// typedef would be a good choice as well
 
 void insert(struct Node** head, int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
