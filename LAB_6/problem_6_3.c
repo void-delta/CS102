@@ -17,7 +17,8 @@ void insertTerm(struct Term** head, int coefficient, int exponent) {
 
     if (*head == NULL) {
         *head = newNode;
-    } else {
+    } 
+    else {
         struct Term* current = *head;
         while (current->next != NULL) {
             current = current->next;
@@ -46,10 +47,12 @@ void addPolynomials(struct Term* poly1, struct Term* poly2, struct Term** result
         if (current1->exponent > current2->exponent) {
             insertTerm(result, current1->coefficient, current1->exponent);
             current1 = current1->next;
-        } else if (current1->exponent < current2->exponent) {
+        } 
+        else if (current1->exponent < current2->exponent) {
             insertTerm(result, current2->coefficient, current2->exponent);
             current2 = current2->next;
-        } else {
+        } 
+        else {
             int sum = current1->coefficient + current2->coefficient;
             if (sum != 0) {
                 insertTerm(result, sum, current1->exponent);
